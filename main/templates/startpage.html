@@ -1,0 +1,45 @@
+﻿﻿
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>AgStart!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style="background-color: #FFC9B5">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+    </nav>
+    <h3 class="enter_a">Enter address to begin!</h3>
+    <div class="address_f" style="background-color: #EAF2EF">
+
+
+        <div class="form-inline" >
+            <div class="form-items">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form}}
+
+                    <button type="submit" class="btn btn-outline-secondary">Begin</button>
+
+
+
+                    <p>Sample: 1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
