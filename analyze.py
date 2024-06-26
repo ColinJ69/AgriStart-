@@ -1,5 +1,5 @@
-#from .Weather_Data import get_coords
-#from .Weather_data import get_weather_soil_data
+from .WeatherData import get_coords
+from .WeatherData import get_weather_soil_data
 import requests
 import torch
 from torchvision import transforms
@@ -9,10 +9,11 @@ import haversine as hs
 from haversine import Unit
 import reverse_geocoder as rg
 import pandas as pd
-
+import cv2
+import torch.nn as nn
 def is_farmable(address):
     class_names = ['good', 'bad']
-    url = requests.get(f'https://maps.googleapis.com/maps/api/streetview?parameters&size=640x640&fov=50&location={address}&key=xxxxxxxxxxx')
+    url = requests.get(f'https://maps.googleapis.com/maps/api/streetview?parameters&size=640x640&fov=50&location={address}&key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     
     with open("img.png", "wb") as file:
         file.write(url.content)
@@ -71,41 +72,115 @@ def determine_farmability(address):
 def get_score(address):
     comp, farmable, city, miles = determine_farmability(address)
     final_score = 0
-    max_score = 10
-    if comp['climate'] == 'Tundra' or comp['climate'] == 'Desert':
-        final_score -= 2
-    else:
-        final_score += 2
+    if comp['climate'] != 'Tundra' or comp['climate'] != 'Desert':
+        final_score += 3
         
-    if 60 < comp['temperature'] > 85:
-        final_score -= 1
-    else: 
+    if 60 < comp['temperature'] < 85:
         final_score += 1
     
     if 5 < miles < 10:
         final_score += 1
-    elif miles < 5: 
-        final_score -= 1
-    else:
+    elif miles > 10:
         final_score += 3
+    
+    if farmable == 'good':
+        final_score += 3
+    
+    final_score *= 10
+    return final_score, comp, city, miles
         
     
     
     
-def recommend_crops(N, P, K, pH, temperature, rainfall):
+def get_recommendations(N, P, K, pH, temperature):
     crops = pd.read_csv('https://github.com/ColinJ69/AgriStart/raw/main/Data/Crop_recommendation.csv')
-    df = crops[((abs(crops['N'] - N)) < 10) & ((abs(crops['P'] - P)) < 10) & ((abs(crops['K'] - K)) < 10) &
-               ((abs(crops['ph'] - pH)) < 1) & ((abs(crops['temperaturef'] - temperature)) < 10) &  ((abs(crops['rainfall'] - rainfall)) < 35)]
-    recommendations = df[['label']]
-    best_crops = recommendations.value_counts().nlargest(3)
-    
-    
+    df = crops[((abs(crops['N'] - float(N))) < 15) & ((abs(crops['P'] - float(P))) < 15) & ((abs(crops['K'] - float(K))) < 15) &
+               ((abs(crops['ph'] - float(pH))) < 1) & ((abs(crops['temperaturef'] - float(temperature))) < 15)]
+    best_crops = df['label'].value_counts()[:3].index.tolist()
+
     def recommend_fert():
         
         fertilizer = pd.read_csv('https://github.com/ColinJ69/AgriStart/raw/main/Data/fertilizer.csv')
-        top_crop1 = best_crops.iloc[0]
-        top_crop2 = best_crops.iloc[1]
-        top_crop3 = best_crops.iloc[2]
+        values = []
+        for crop in best_crops:
+          
+            n = fertilizer[fertilizer['Crop'] == crop]['N'].iloc[0]
+           
+            p = fertilizer[fertilizer['Crop'] == crop]['P'].iloc[0]
+           
+            k = fertilizer[fertilizer['Crop'] == crop]['K'].iloc[0]
+         
+        
+
+            na = n - float(N)
+            pa = p - float(P)
+            ka = k - float(K)
+        
+            temp = {abs(na): "N", abs(pa): "P", abs(ka): "K"}
+            max_value = temp[max(temp.keys())]
+            if max_value == "N":
+                if n < 0:
+                    key = 'NHigh'
+                else:
+                    key = "Nlow"
+            elif max_value == "P":
+                if p < 0:
+                    key = 'PHigh'
+                else:
+                    key = "Plow"
+            else:
+                if k < 0:
+                    key = 'KHigh'
+                else:
+                    key = "Klow"
+            values.append(key)
+        return values
+    values = recommend_fert()
+    results = dict(zip(best_crops, values))
+    return(results)
+    
+class Model(nn.Module):
+  def __init__(self):
+    super().__init__()
+    self.conv1 = nn.Sequential(nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(), nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2))
+    self.conv2 = nn.Sequential(nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(), nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(), nn.MaxPool2d(kernel_size=2, stride=2))
+    self.classifier = nn.Sequential(nn.Dropout(), nn.Linear(3276800, 3))
+
+  def forward(self, x):
+    x = self.conv1(x)
+    x = self.conv2(x)
+    x = x.view(x.size(0), -1)
+    x = self.classifier(x)
+    return x
+    
+def disease_detection():
+    model = Model()
+    model.load_state_dict(torch.load("C:/Users/johns/Downloads/disease_model2.pth"))
+    model.eval()
+    transform = transforms.Compose([transforms.Resize((640,640)), transforms.ToTensor()])
+    class_names = ['Healthy', 'Powdery', 'Rust']
+    cam = cv2.VideoCapture(0)
+    while True:
+        ret, frame = cam.read()
+        if not ret:
+            break
+        cv2.imwrite('disease_img.jpg', frame)
+        def detect():
+            img = Image.open('disease_img.jpg')
+            model.eval()
+            with torch.inference_mode():
+                img_trans = transform(img).unsqueeze(dim=0)
+                output_disease = model(img_trans)
+                predicted_class = torch.argmax(torch.softmax(output_disease, dim=1),dim=1)
+                return class_names[predicted_class.item()]
+        return detect()
+    cam.release()
+    os.remove('disease_img.jpg')
+    cv2.destroyAllWindows()
         
 
         
