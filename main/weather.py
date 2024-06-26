@@ -8,7 +8,7 @@ from kgcPy import *
 
 def get_coords(user_address):
 	
-	geocode_request = requests.get(f"https://maps.googleapis.com/maps/api/geocode/json?address={user_address}&key=AIzaSyB8Rze6NllcVOtL0vKdIlsfIJA6AFz7_x8")
+	geocode_request = requests.get(f"https://maps.googleapis.com/maps/api/geocode/json?address={user_address}&key=xxxxxxxxxxxxxxxxxxxxxx")
 	data = geocode_request.json()
 	lat = data['results'][0]['geometry']['location']['lat']
 	lng =data['results'][0]['geometry']['location']['lng']
