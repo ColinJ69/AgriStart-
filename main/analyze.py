@@ -13,7 +13,7 @@ import cv2
 import torch.nn as nn
 def is_farmable(address):
     class_names = ['good', 'bad']
-    url = requests.get(f'https://maps.googleapis.com/maps/api/streetview?parameters&size=640x640&fov=50&location={address}&key=AIzaSyB8Rze6NllcVOtL0vKdIlsfIJA6AFz7_x8')
+    url = requests.get(f'https://maps.googleapis.com/maps/api/streetview?parameters&size=640x640&fov=50&location={address}&key=xxxxxxxxxxxxxxxxxxxxxxxxxxxx')
     
     with open("img.png", "wb") as file:
         file.write(url.content)
