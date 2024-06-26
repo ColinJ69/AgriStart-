@@ -183,7 +183,3 @@ def disease_detection():
     cv2.destroyAllWindows()
         
 
-        
-
-        
-recommend_crops(90, 42, 43, 6.9, 69, 202)
