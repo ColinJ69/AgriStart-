@@ -1,0 +1,45 @@
+State,Area,,Amount,Name,Requirements,Native
+Missouri,Health,,50000 - 1000000,Delta Health Care Services Grant,Entity,0
+U.S.,Housing,,50000,Housing Preservation Grants,Entity,1
+U.S.,Water,,150000,Water Systems Grant Program,Entity,1
+U.S.,Economic,,200000,Rural Cooperative Development Grant,Entity,0
+U.S.,Economic,,175000,Socially Disadvantaged Groups Grant Program,Entity,1
+U.S.,Health,,50000 - 1000000,Distance Learning & Telemedicine Grants,Entity,1
+U.S.,Energy,,250000 - 500000,Rural  Energy for America Program,Entity,0
+U.S.,Economic,,50000 - 250000,Disaster Relief Supplemental Grant Funds,Entity,1
+U.S.,Economic,,250000 - 10000000     ,Meat and Poultry Processing Expansion Program,Individual,0
+U.S.,Economic,,Unknown,High Energy Cost Grants,Individual,0
+U.S.,Economic,,Unknown,Advaned Biofuel Payment Program,Entity,0
+U.S.,Water,,Unknown,Technical Assistance and Construction for Innovative regional Wastewater Treatment Solutions,Entity,0
+U.S.,Economic,,800000+,Native Comminity Development Financial Institution,Entity,1
+U.S.,Economic,,1000000,Agriculture Innovation Center Program,Entity,0
+U.S.,Economic,,Unknown,Business and Industry CARES Act Program,Entity,0
+U.S.,Economic,,250000000,"Biorefinery, Renewable, Chemical, and Biobased Product Manufacturing Assistance Program",Entity,0
+U.S.,Economic,,Unknown,Broadband Technical Assistance,Entity,0
+U.S.,Energy,,Unknown,Denali Commision High Energy Cost Grants,Individual,0
+U.S.,Energy,,Unknown,Distributed Generation Energy Project Financing,Entity,0
+U.S.,Energy,,Unknown,Electric Infrastructure Loan & Loan Guarantee Program,Entity,0
+U.S.,Energy,,Unknown,Energy Efficiency and Conservation Loan Program,Entity,0
+U.S.,Energy,,Unknown,Energy Resource Conservation,Entity,0
+U.S.,Energy,,Unknown,Rural Energy Savings Program,Entity,0
+U.S.,Energy,,1000000 - 100000000,Powering Affordable Clean Energy Program,Entity,0
+U.S. ,Housing,,3000 - 5000,Individual Water and Wastewater grants,Individual,0
+U.S.,Housing,,Varies,Single Family Housing Direct Home Loans,Individual,0
+U.S. ,Housing,,Varies,Single Family Housing Repair Loans & Grants,Individual,0
+U.S.,Water,,15000+,Rural Decentralized Water Systems Grant Program,Entity,1
+Alaska,Water,,Varies,Grant for Rural and Native Alaskan Villages,Entity,1
+U.S.,Water,,200000,Revolving Funds for Financing Water and Wastewater projects,Entity,0
+U.S.,Water,,Unknown,Water & Waste Disposal Technical Assistance and Training Grants,Entity,1
+Alabama,Water,,15000+,Rural Decentralized Water Systems Grant Program in Alabama,Entity,0
+Alabama,Economic,,200000,Rural Cooperative Development Grant in Alabama,Entity,0
+Alabama,Economic,,175000,Socially Disadvantaged Groups Grant in Alabama,Individual,1
+Alabama,Energy,,250000,Rural Energy for America Assistance Grant in Alabama,Entity,0
+Alaska,Water,,15000+,Rural Decentralized Water Systems Grant Program in Alabama,Entity,0
+Alaska,Economic,,200000,Rural Cooperative Development Grant in Alabama,Entity,0
+Alaska,Economic,,Unknown,Business & Industry Loan Guarentees in Alaska,Individual,0
+Alaska,Economic,,Unknown,Community Facilities Direct Loan & Grant Program in Alaska,,0
+Arizona,Water,,15000+,Rural Decentralized Water Systems Grant Program in Alabama,Entity,0
+Arizona,Economic,,200000,Rural Cooperative Development Grant in Arizona,Entity,0
+Arizona,Economic,,175000,Socially Disadvantaged Groups Grant in Arizona,Individual,1
+Arizona,Economic,,Unknown,Business & Industry Loan Guarentees in Arizona,Individual,0
+Arizona,Economic,,1000000,Intermediary Relending Program in Arizona,Entity,0
