@@ -1,0 +1,71 @@
+﻿﻿
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tutorials</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script type="application/javascript">
+        (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-0ebd472h");
+        copilot("init",{});
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style="background-image: linear-gradient(to top right, #C1C8E4, #84CEEB)">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo1.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/score'>Score</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/tutorials'>Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/recommendations'>Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/detection'>Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/grants'>Grants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br /><br /><br /><br /><br /><br /><br />
+    <h1 style="color: white; position: absolute; top: 10%; right: 40%;">Available tutorials</h1>
+
+
+        <div style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); color: white; flex-direction: column; background-image: url(https://github.com/ColinJ69/Farmers_Friend/raw/main/growing.jpg); border-radius: 10px 10px; width: 400px; height: 200px; margin: auto; text-align: center; align-items: center; top: 50% ">
+            <div class="">
+                <h2 style="margin:auto;text-align:center">How to start growing</h2><br>
+
+                <h5 style="margin:auto; text-align: center">Learn how to get ready for your first growing season!</h5><br />
+                <a style="margin:auto; text-align:center;" href='tutorials/growing'><button style="display: inline-block; color: white;border-color: white; border-radius: 25px; height: 50px; width: 150px; font-size: 2rem; align-items: center; background-color: #5AB9EA ">Learn</button></a>
+            </div>
+        </div><br />
+        <div style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); color: white; flex-direction: column; background-image: url(https://github.com/ColinJ69/Farmers_Friend/raw/main/recommend.jpg); border-radius: 10px 10px; width: 400px; height: 200px; margin: auto; text-align: center; align-items: center;">
+            <div class="">
+                <h2 style="margin:auto;text-align:center; top: 90%">Grow sustainably</h2><br>
+                <h5 style="margin:auto; text-align:center;">Learn about new sustainable practices in Ag!</h5><br />
+                <a style="margin:auto; text-align:center;" href='tutorials/sustainable'><button style="display: inline-block; color: white;border-color: white; border-radius: 25px; height: 50px; width: 150px; font-size: 2rem; align-items: center; background-color: #5AB9EA ">Learn</button></a>
+            </div>
+        </div>
+   
+</body>
+</html>

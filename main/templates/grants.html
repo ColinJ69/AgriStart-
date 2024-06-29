@@ -1,0 +1,94 @@
+﻿﻿
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Farmer's Friend</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script type="application/javascript">
+        (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-0ebd472h");
+        copilot("init",{});
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style="background-image: linear-gradient(to top right, #C1C8E4, #84CEEB)">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo1.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/score'>Score</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/tutorials'>Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/recommendations'>Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/detection'>Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/grants'>Grants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br /><br /><br /><br /><br /><br />
+    {% if not submitted %}
+        <div style="background-color: #C1C8E4">
+            <h1 style="color: white; position: absolute; top: 25%; left: 25%;">Search for cash grants matched to you!</h1>
+            <div style="position:absolute; top:35%; color: white; left:35%; width: 400px; height:300px; border: solid white; border-radius: 25px;">
+
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <h2>Enter State</h2>
+                    {{ form.state }}
+                    <h2>What type of grant?</h2>
+                    {{form.area}}
+                    <h2>Are you Native?</h2>
+                    {{form.native}}
+                    <br /><br />
+
+                    <button id="btn" type="submit">Submit</button>
+                    <br />
+                </form>
+                
+            </div>
+        </div>
+    {% endif %}
+    {% if submitted %}
+    <h1 style="color: white; position: absolute; left: 41%;">Grants for you</h1><br /><br /><br>
+    <br/>
+    {% for grant_n, grant_a in grants %}
+        <div style="color: white; text-align:center; left: 41%;height: 200px; border: 2px solid white">
+            <h2>Name:</h2>
+            <h3>{{grant_n}}</h3>
+            <h2>Amount:</h2>
+            <h3>{{grant_a}}</h3>
+        </div>
+
+    {% endfor %}
+    {% endif %}
+
+
+
+
+
+
+</body>
+</html>

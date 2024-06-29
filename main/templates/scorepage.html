@@ -1,0 +1,121 @@
+﻿﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Farmer's Friend</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script type="application/javascript">
+        (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-0ebd472h");
+        copilot("init",{});
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style="background-image: linear-gradient(to top right, #C1C8E4, #84CEEB)">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo1.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/score'>Score</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/tutorials'>Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/recommendations'>Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/detection'>Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/grants'>Grants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br /><br /><br /><br />
+
+                      <div class="chatbot_div">
+                          <form method="post">
+                              {{form}}
+                              <button class="btn btn-secondary">Begin</button>
+
+                          </form><br /><br /><br />
+                         
+                          <h2>Farmability Score</h2><hr style="color: white"/>
+                          <div class="container">
+                              <div class="ui-widgets">
+                                  <div class="ui-values">{{score}}%</div>
+                                  <div class="ui-labels"></div>
+                              </div>
+                          </div>
+                          <br /><br /><br /><br /><br /><br /><br />
+
+                      </div>
+    <div class="info_div">
+        <h2 class="soil_title">Soil Report</h2>
+        <hr style="color: white">
+
+        <span style="align-items: center; text-align: center">
+            <h2 class="emoji">☀️</h2><h6>
+                {{average_temp}}
+                average temperature
+            </h6>
+
+
+            <h2 class="emoji">💧</h2><h6>
+                {{soil_moist}}
+            </h6>
+       
+        <br>
+
+        <h2 class="emoji">🌱</h2><h6>
+            {{soil_temp}}
+        </h6>
+
+
+        <h2 class="emoji">☁️</h2><h6>
+            {{climate}}
+        </h6>
+        </span>
+    </div>
+    <div class="recommend_div">
+        <br><br><br />
+
+        <br><br>
+        <h2>Nearest City</h2><hr style="color: white">
+        {% if miles < 3 %}
+        <h3>The address is in {{city}}</h3>
+        {% else %}
+        <h3>{{city}}, which is {{miles}} miles away</h3>
+        {% endif %}
+        
+    </div>
+
+   
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

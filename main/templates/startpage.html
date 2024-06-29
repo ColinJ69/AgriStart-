@@ -1,0 +1,67 @@
+﻿﻿
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Farmer's Friend</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style="background-image: linear-gradient(to top right, #C1C8E4, #84CEEB)">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo1.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/score'>Score</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/tutorials'>Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/recommendations'>Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/detection'>Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/grants'>Grants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h2 class="enter_a" style="color: white; top: 20%; left: 39%">Enter address to begin!</h2>
+    <div class="address_f" style="background-color: #EAF2EF; top: 40%">
+
+
+        <div class="form-inline" >
+            <div class="form-items">
+                <form method="post">
+                    {% csrf_token %}
+                    {{form}}
+
+                    <button type="submit" class="btn btn-outline-secondary">Begin</button>
+
+
+
+                    <p>Sample: 1600 Pennsylvania Avenue NW, Washington, DC 20500</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

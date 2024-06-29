@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+{% load static %}
+{% load markup_tags %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Farmer's Friend</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script type="application/javascript">
+        (function(w,d,s,o,f,js,fjs){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments);};(js=d.createElement(s)),(fjs=d.getElementsByTagName(s)[0]);js.id=o;js.src=f;js.async=1;js.referrerPolicy = "origin";fjs.parentNode.insertBefore(js,fjs);})(window,document,"script","copilot","https://script.copilot.live/v1/copilot.min.js?tkn=cat-0ebd472h");
+        copilot("init",{});
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
+</head>
+<body style=" background-image: linear-gradient(to top right, #C1C8E4, #84CEEB); background-attachment: fixed;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+        <img src="https://github.com/ColinJ69/Farmers_Friend/raw/main/logo1.png" height="48" width="112" />
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/score'>Score</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/tutorials'>Tutorials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/recommendations'>Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/detection'>Detection</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='/grants'>Grants</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br /><br><br><br />
+    {% if not submitted %}
+    <h1 style="color: white; position: absolute; top:10%; left: 16%">Get recommended crops and fertilizer based on your soil</h1>
+    <div id="soil_form_div">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <h4 style="color: white">Find information from soil kit, which you can buy on Amazon <a href="https://www.amazon.com/Moisture-Nutrients-Outdoor-Battery-Required/dp/B0BJCLY3YL/ref=sr_1_18?dib=eyJ2IjoiMSJ9.Rxqbe6AwSuHVbdXLS_Aq-vdCRIHrmgFvb6YDZ4OgsIGIuxp3ftx8SvDKS9R91-pns4xdzEZIGOD6Z7YAO3_riz8uyMv5XXmkwLmClWz7Iq06RD2m83zk7q73qlf1bXhp7L65xPjeKQiQL4O268A2qPQhEiB1l2H9ZGDtV_bjjQUYsanvS_p48JDZUoGWKgMGNhBlov6cKYO9mev5Sp_1fuP5F1926qdKv0qmslcp2yfldkwNwCDsTE-W6drOUfYucWHMO8tJEd9YYex_tmi4N1KxMqkV8oVr9vUb6o4TngI.xqTqy_WOgXuxINyZwUcCCnYp504RYUzoAnmbn3HWpLk&dib_tag=se&keywords=soil+test+kit&qid=1719599536&sr=8-18">here</a></h4>
+            <button style="color: white; background-color: #5AB9EA; width: 100%;  border-color: white;height: 50px; border-radius: 10px; font-size: 2rem;" type="submit">Submit</button>
+
+        </form>
+    </div>
+    {% endif %}
+    {% if submitted %}
+    {% for crop, fert in crops %}
+
+    <div id="rec">
+        <h2>Crop: {{crop}}</h2>
+        {% if fert == 'Nhigh' %}
+
+
+        <h3>The N value of the soil is high and might give rise to weeds.</h3>
+        <br /><h4>Please consider the following suggestions:</h4>
+
+        <ul>
+
+            <li><i>Manure </i> - adding manure is one of the simplest ways to amend your soil with nitrogen. Be careful as there are various types of manure with varying degrees of nitrogen.</li>
+
+            <li><i>Coffee grinds </i> - use your morning addiction to feed your gardening habit! Coffee grinds are considered a green compost material which is rich in nitrogen. Once the grounds break down your soil will be fed with nitrogen. It will also provide increased drainage to your soil.</li>
+
+
+            <li><i>Plant nitrogen fixing plants </i> – planting vegetables that are in Fabaceae family like peas, beans and soybeans have the ability to increase nitrogen in your soil.</li>
+
+            <li>Plant 'Green manure' crops like corn, cabbage, and broccoli.</li>
+
+            <li>Use mulch (wet grass) while growing crops - Mulch can also include sawdust and scrap soft woods</li>
+        </ul>
+        {% elif fert == 'Nlow' %}
+        <h3>
+            The N value of your soil is low.
+        </h3><br />
+
+        <h4>Please consider the following suggestions:</h4>
+        <ul>
+            <li><i>Add sawdust or fine woodchips to your soil</i> – the carbon in the sawdust/woodchips love nitrogen and will help absorb and soak up and excess nitrogen.</li>
+
+
+            <li><i>Plant heavy nitrogen feeding plants</i> – tomatoes, corn, broccoli, cabbage and spinach are examples of plants that thrive off nitrogen and will suck the nitrogen dry.</li>
+
+
+            <li><i>Water</i> – soaking your soil with water will help leach the nitrogen deeper into your soil, effectively leaving less for your plants to use.</li>
+
+
+            <li><i>Sugar</i> – In limited studies, it was shown that adding sugar to your soil can help potentially reduce the amount of nitrogen is your soil. Sugar is partially composed of carbon, an element which attracts and soaks up the nitrogen in the soil. This is similar concept to adding sawdust/woodchips which are high in carbon content.</li>
+
+            <li>Add composted manure to the soil.</li>
+
+            <li>Plant Nitrogen fixing plants like peas or beans.</li>
+
+
+        </ul>
+        {% elif fert == 'Phigh' %}
+        <h3>The P value of your soil is high.</h3>
+        <br /> <h4>Please consider the following suggestions:</h4>
+        <ul>
+
+            <li><i>Avoid adding manure</i> – manure contains many key nutrients for your soil but typically including high levels of phosphorous. Limiting the addition of manure will help reduce phosphorus being added.</li>
+
+
+            <li><i>Use only phosphorus-free fertilizer</i> – if you can limit the amount of phosphorous added to your soil, you can let the plants use the existing phosphorus while still providing other key nutrients such as Nitrogen and Potassium. Find a fertilizer with numbers such as 10-0-10, where the zero represents no phosphorous.</li>
+
+
+            <li><i>Water your soil</i> – soaking your soil liberally will aid in driving phosphorous out of the soil. This is recommended as a last ditch effort.</li>
+
+            <li>Plant nitrogen fixing vegetables to increase nitrogen without increasing phosphorous (like beans and peas).</li>
+
+            <li>5. Use crop rotations to decrease high phosphorous levels</li>
+        </ul>
+        {% elif fert == 'Plow' %}
+        <h3>The P value of your soil is low.</h3>
+        <br /><h4>Please consider the following suggestions:</h4>
+        <ul>
+
+            <li><i>Bone meal</i> – a fast acting source that is made from ground animal bones which is rich in phosphorous.</li>
+
+
+            <li><i>Rock phosphate</i> – a slower acting source where the soil needs to convert the rock phosphate into phosphorous that the plants can use.</li>
+
+
+            <li><i>Phosphorus Fertilizers</i> – applying a fertilizer with a high phosphorous content in the NPK ratio (example: 10-20-10, 20 being phosphorous percentage).</li>
+
+
+            <li><i>Organic compost</i> – adding quality organic compost to your soil will help increase phosphorous content.</li>
+
+
+            <li><i>Manure</i> – as with compost, manure can be an excellent source of phosphorous for your plants.</li>
+
+
+            <li><i>Clay soil</i> – introducing clay particles into your soil can help retain & fix phosphorus deficiencies.</li>
+
+
+            <li><i>Ensure proper soil pH</i> – having a pH in the 6.0 to 7.0 range has been scientifically proven to have the optimal phosphorus uptake in plants.</li>
+        </ul>
+        {% elif fert == 'Khigh' %}
+        <h3>The K value of your soil is high.</h3><br />
+        <h4>Please consider the following suggestions:</h4>
+        <ul>
+
+            <li><i>Loosen the soil</i> deeply with a shovel, and water thoroughly to dissolve water-soluble potassium. Allow the soil to fully dry, and repeat digging and watering the soil two or three more times.</li>
+
+
+            <li><i>Sift through the soil</i>, and remove as many rocks as possible, using a soil sifter. Minerals occurring in rocks such as mica and feldspar slowly release potassium into the soil slowly through weathering.</li>
+
+            <li>Stop applying potassium-rich commercial fertilizer. Apply only commercial fertilizer that has a '0' in the final number field. Commercial fertilizers use a three number system for measuring levels of nitrogen, phosphorous and potassium. The last number stands for potassium. Another option is to stop using commercial fertilizers all together and to begin using only organic matter to enrich the soil.</li>
+
+            <li>Mix crushed eggshells, crushed seashells, wood ash or soft rock phosphate to the soil to add calcium. Mix in up to 10 percent of organic compost to help amend and balance the soil.</li>
+
+            <li>Use NPK fertilizers with low K levels and organic fertilizers since they have low NPK values.</li>
+
+
+        </ul>
+        {% elif fert == 'Klow' %}
+
+        <h3>The K value of your soil is low</h3><br />
+        <h4>Please consider the following suggestions:</h4>
+        <ul>
+
+            <li>1. Mix in muricate of potash or sulphate of potash</li>
+            <li>2. Try kelp meal or seaweed</li>
+            <li>3. Try Sul-Po-Mag</li>
+            <li>4. Bury banana peels an inch below the soils surface</li>
+            <li>5. Use Potash fertilizers since they contain high values potassium</li>
+
+        </ul>
+        {% endif %}
+
+        
+    </div>
+    <br />
+        {% endfor %}
+    {% endif %}
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+</body>
+</html>
