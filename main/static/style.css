@@ -51,7 +51,7 @@ body {
     height: 190px;
     width: 250px;
     border-radius: 10px;
-    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/diesase.jpg')
+    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/images/diesase.jpg')
 }
 #score_div {
     
@@ -62,7 +62,7 @@ body {
     height: 190px;
     width: 250px;
     border-radius: 10px;
-    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/growing.jpg')
+    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/images/growing.jpg')
 }
 #tutorial_div {
     text-align: center;
@@ -72,7 +72,7 @@ body {
     height: 190px;
     width: 250px;
     border-radius: 10px;
-    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/tutorials.jpg')
+    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/images/tutorials.jpg')
 }
 #recommend_div {
     text-align: center;
@@ -82,7 +82,7 @@ body {
     height: 190px;
     width: 250px;
     border-radius: 10px;
-    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/recommend.jpg')
+    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/images/recommend.jpg')
 }
 #grant_div {
     text-align: center;
@@ -92,7 +92,7 @@ body {
     height: 190px;
     width: 250px;
     border-radius: 10px;
-    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/grants.jpg')
+    background-image: url('https://github.com/ColinJ69/Farmers_Friend/raw/main/images/grants.jpg')
 }
 .enter_a {
     color: white;
